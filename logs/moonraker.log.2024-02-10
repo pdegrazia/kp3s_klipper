@@ -1,0 +1,243 @@
+-------------------- Log Start | Sat Feb 10 00:09:05 2024 --------------------
+data_path: /home/paolo/printer_data
+is_default_data_path: False
+config_file: /home/paolo/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: False
+instance_uuid: 01cd3ac7f64e459b844da4d0adaadb2b
+unix_socket_path: /home/paolo/printer_data/comms/moonraker.sock
+software_version: v0.8.0-308-g71b46cc
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/paolo/printer_data/logs/moonraker.log
+python_version: 3.11.2 (main, Mar 13 2023, 12:18:29) [GCC 12.2.0]
+launch_args: /home/paolo/moonraker-env/bin/python /home/paolo/moonraker/moonraker/moonraker.py -d /home/paolo/printer_data
+msgspec_enabled: False
+uvloop_enabled: False
+
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+klippy_uds_address = /home/paolo/printer_data/comms/klippy.sock
+
+[authorization]
+trusted_clients = 
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+cors_domains = 
+	*.lan
+	*.local
+	*://localhost
+	*://localhost:*
+	*://my.mainsail.xyz
+	*://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
+
+[update_manager]
+channel = dev
+refresh_interval = 168
+
+[update_manager fluidd-config]
+type = git_repo
+primary_branch = master
+path = ~/fluidd-config
+origin = https://github.com/fluidd-core/fluidd-config.git
+managed_services = klipper
+
+[update_manager fluidd]
+type = web
+channel = stable
+repo = fluidd-core/fluidd
+path = ~/fluidd
+
+#################################################################
+All Configuration Files:
+/home/paolo/printer_data/config/moonraker.conf
+#################################################################
+
+Database Versions: pylmdb = 1.4.1, lmdb = (0, 9, 29)
+Unsafe Shutdown Count: 5
+
+System Info:
+
+***python***
+  version: (3, 11, 2, 'final', 0)
+  version_string: 3.11.2 (main, Mar 13 2023, 12:18:29) [GCC 12.2.0]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 32bit
+  processor: armv7l
+  cpu_desc: ARMv7 Processor rev 4 (v7l)
+  serial_number: e0c6b35c
+  hardware_desc: BCM2835
+  model: Raspberry Pi 3 Model B Plus Rev 1.3
+  total_memory: 944092
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 6f
+  manufacturer: Unknown
+  oem_id: 0303
+  product_name: SDABC
+  product_revision: 1.0
+  serial_number: f3c18071
+  manufacturer_date: 6/2023
+  capacity: 29.2 GiB
+  total_bytes: 31370248192
+
+***distribution***
+  name: Raspbian GNU/Linux 12 (bookworm)
+  id: raspbian
+  version: 12
+  version_parts: {'major': '12', 'minor': '', 'build_number': ''}
+  like: debian
+  codename: bookworm
+  release_info: {}
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+Module libcamera unavailble, import failed
+
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', 'network-online.target', '-.mount', 'sysinit.target']
+**After=['basic.target', 'system.slice', 'sysinit.target', 'network-online.target', 'systemd-journald.socket', '-.mount']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/paolo/printer_data/systemd/moonraker.env
+**ExecStart=/home/paolo/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=/home/paolo/moonraker
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=paolo
+
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['-.mount', 'sysinit.target', 'system.slice']
+**After=['systemd-journald.socket', 'basic.target', 'sysinit.target', 'network-online.target', 'system.slice', '-.mount']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/paolo/printer_data/systemd/klipper.env
+**ExecStart=/home/paolo/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/paolo/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=paolo
+CPU Throttled Flags: ['Under-Voltage Detected', 'Currently Throttled', 'Previously Under-Volted', 'Previously Throttled']
+Git Repo moonraker: No warnings detected
+Git Repo klipper: No warnings detected
+Git Repo fluidd-config: No warnings detected
+Klipper Version: v0.12.0-102-g9f41f53c
+2024-02-10 00:09:05,607 [klippy_connection.py:_process_status_update()] - Klippy has shutdown
+2024-02-10 00:09:05,612 [proc_stats.py:_handle_shutdown()] - 
+Moonraker System Usage Statistics:
+System Time: 1707523716.211936, Usage: 1.51%, Memory: 38904 kB
+System Time: 1707523717.214211, Usage: 1.57%, Memory: 38904 kB
+System Time: 1707523718.215902, Usage: 1.54%, Memory: 38904 kB
+System Time: 1707523719.217087, Usage: 2.56%, Memory: 38904 kB
+System Time: 1707523720.218096, Usage: 1.54%, Memory: 38904 kB
+System Time: 1707523721.219216, Usage: 1.57%, Memory: 38904 kB
+System Time: 1707523722.220219, Usage: 1.54%, Memory: 38904 kB
+System Time: 1707523723.220773, Usage: 1.53%, Memory: 38904 kB
+System Time: 1707523724.222563, Usage: 1.54%, Memory: 38904 kB
+System Time: 1707523725.223650, Usage: 1.57%, Memory: 38904 kB
+System Time: 1707523726.224497, Usage: 1.56%, Memory: 38904 kB
+System Time: 1707523727.225967, Usage: 1.57%, Memory: 38904 kB
+System Time: 1707523728.227047, Usage: 1.51%, Memory: 38904 kB
+System Time: 1707523729.227450, Usage: 2.58%, Memory: 38904 kB
+System Time: 1707523730.228822, Usage: 1.52%, Memory: 38904 kB
+System Time: 1707523731.229815, Usage: 1.55%, Memory: 38904 kB
+System Time: 1707523732.230772, Usage: 1.5%, Memory: 38904 kB
+System Time: 1707523733.231420, Usage: 1.6%, Memory: 38904 kB
+System Time: 1707523734.232925, Usage: 1.49%, Memory: 38904 kB
+System Time: 1707523735.234202, Usage: 1.58%, Memory: 38904 kB
+System Time: 1707523736.234446, Usage: 1.5%, Memory: 38904 kB
+System Time: 1707523737.236798, Usage: 1.55%, Memory: 38904 kB
+System Time: 1707523738.238144, Usage: 1.5%, Memory: 38904 kB
+System Time: 1707523739.238866, Usage: 2.53%, Memory: 38904 kB
+System Time: 1707523740.239288, Usage: 1.52%, Memory: 38904 kB
+System Time: 1707523741.240197, Usage: 1.54%, Memory: 38904 kB
+System Time: 1707523742.241466, Usage: 1.55%, Memory: 38904 kB
+System Time: 1707523743.243154, Usage: 1.62%, Memory: 38904 kB
+System Time: 1707523744.243825, Usage: 1.49%, Memory: 38904 kB
+System Time: 1707523745.244739, Usage: 1.49%, Memory: 38904 kB
+CPU Temperature: 37.014
+2024-02-10 00:09:05,614 [proc_stats.py:_handle_shutdown()] - Throttled Flags: Previously Under-Volted Previously Throttled
+2024-02-10 00:12:43,799 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.1.128
+2024-02-10 00:12:43,838 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.1.128) [_TRUSTED_USER_] 12.91ms
+2024-02-10 00:12:43,986 [application.py:log_request()] - 101 GET /websocket?token=XJCH4YC5PWSEWZ6U46JF6BTZO3D7T3J7 (192.168.1.128) [_TRUSTED_USER_] 3.71ms
+2024-02-10 00:12:43,987 [websockets.py:open()] - Websocket Opened: ID: 1726809328, Proxied: True, User Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36, Host Name: kp3s.local
+2024-02-10 00:12:43,997 [websockets.py:_handle_identify()] - Websocket 1726809328 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 00:12:43,998 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 00:12:56,898 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-10 00:12:56,927 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-10 00:12:58,160 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-10 00:13:00,840 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-10 00:13:00,843 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-10 00:13:01,091 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-02-10 00:13:01,361 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-02-10 00:13:01,842 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor HOST', 'temperature_sensor MCU', 'heater_bed', 'extruder']
+2024-02-10 00:20:15,607 [application.py:prepare()] - Upload Request Received from 192.168.1.128
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryXp9vORoco8SSymyF
+2024-02-10 00:20:15,921 [application.py:post()] - Processing Uploaded File: laserCorner.gcode
+2024-02-10 00:20:16,292 [shell_command.py:pipe_data_received()] - INFO:metadata:Object Processing is disabled
+
+2024-02-10 00:20:16,419 [shell_command.py:_check_proc_success()] - Command (/home/paolo/moonraker-env/bin/python /home/paolo/moonraker/moonraker/components/file_manager/metadata.py -p /home/paolo/printer_data/gcodes -f "laserCorner.gcode") successfully finished
+2024-02-10 00:20:16,430 [application.py:log_request()] - 201 POST /server/files/upload (192.168.1.128) [_TRUSTED_USER_] 824.68ms
+2024-02-10 00:20:16,434 [job_state.py:_status_update()] - Job Started: laserCorner.gcode
+2024-02-10 00:23:58,706 [websockets.py:on_close()] - Websocket Closed: ID: 1726809328 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 4.71
+2024-02-10 01:24:21,096 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.1.128
+2024-02-10 22:29:42,980 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.1.128
+2024-02-10 22:29:43,021 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.1.128) [_TRUSTED_USER_] 15.46ms
+2024-02-10 22:29:43,168 [application.py:log_request()] - 101 GET /websocket?token=JB54LFPEL6PV7EZIIIO4JIWVOM346STU (192.168.1.128) [_TRUSTED_USER_] 3.29ms
+2024-02-10 22:29:43,169 [websockets.py:open()] - Websocket Opened: ID: 1736837104, Proxied: True, User Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36, Host Name: kp3s.local
+2024-02-10 22:29:43,180 [websockets.py:_handle_identify()] - Websocket 1736837104 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-10 22:29:43,180 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-10 22:29:53,678 [application.py:prepare()] - Upload Request Received from 192.168.1.128
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarynGCmJZLI29clBSo6
+2024-02-10 22:29:54,129 [application.py:post()] - Processing Uploaded File: laserCorner.gcode
+2024-02-10 22:29:54,519 [shell_command.py:pipe_data_received()] - INFO:metadata:Object Processing is disabled
+
+2024-02-10 22:29:54,645 [shell_command.py:_check_proc_success()] - Command (/home/paolo/moonraker-env/bin/python /home/paolo/moonraker/moonraker/components/file_manager/metadata.py -p /home/paolo/printer_data/gcodes -f "laserCorner.gcode") successfully finished
+2024-02-10 22:29:54,656 [application.py:log_request()] - 201 POST /server/files/upload (192.168.1.128) [_TRUSTED_USER_] 979.05ms
+2024-02-10 22:29:54,690 [job_state.py:_status_update()] - Job Started: laserCorner.gcode
+2024-02-10 23:34:21,378 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.1.128

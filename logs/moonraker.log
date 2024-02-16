@@ -1,0 +1,183 @@
+-------------------- Log Start | Fri Feb 16 17:29:27 2024 --------------------
+data_path: /home/paolo/printer_data
+is_default_data_path: False
+config_file: /home/paolo/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: False
+instance_uuid: 01cd3ac7f64e459b844da4d0adaadb2b
+unix_socket_path: /home/paolo/printer_data/comms/moonraker.sock
+software_version: v0.8.0-308-g71b46cc
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/paolo/printer_data/logs/moonraker.log
+python_version: 3.11.2 (main, Mar 13 2023, 12:18:29) [GCC 12.2.0]
+launch_args: /home/paolo/moonraker-env/bin/python /home/paolo/moonraker/moonraker/moonraker.py -d /home/paolo/printer_data
+msgspec_enabled: False
+uvloop_enabled: False
+
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+klippy_uds_address = /home/paolo/printer_data/comms/klippy.sock
+
+[authorization]
+trusted_clients = 
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+cors_domains = 
+	*.lan
+	*.local
+	*://localhost
+	*://localhost:*
+	*://my.mainsail.xyz
+	*://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
+
+[update_manager]
+channel = dev
+refresh_interval = 168
+
+[update_manager fluidd-config]
+type = git_repo
+primary_branch = master
+path = ~/fluidd-config
+origin = https://github.com/fluidd-core/fluidd-config.git
+managed_services = klipper
+
+[update_manager fluidd]
+type = web
+channel = stable
+repo = fluidd-core/fluidd
+path = ~/fluidd
+
+#################################################################
+All Configuration Files:
+/home/paolo/printer_data/config/moonraker.conf
+#################################################################
+
+Database Versions: pylmdb = 1.4.1, lmdb = (0, 9, 29)
+Unsafe Shutdown Count: 5
+
+System Info:
+
+***python***
+  version: (3, 11, 2, 'final', 0)
+  version_string: 3.11.2 (main, Mar 13 2023, 12:18:29) [GCC 12.2.0]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 32bit
+  processor: armv7l
+  cpu_desc: ARMv7 Processor rev 4 (v7l)
+  serial_number: e0c6b35c
+  hardware_desc: BCM2835
+  model: Raspberry Pi 3 Model B Plus Rev 1.3
+  total_memory: 944092
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 6f
+  manufacturer: Unknown
+  oem_id: 0303
+  product_name: SDABC
+  product_revision: 1.0
+  serial_number: f3c18071
+  manufacturer_date: 6/2023
+  capacity: 29.2 GiB
+  total_bytes: 31370248192
+
+***distribution***
+  name: Raspbian GNU/Linux 12 (bookworm)
+  id: raspbian
+  version: 12
+  version_parts: {'major': '12', 'minor': '', 'build_number': ''}
+  like: debian
+  codename: bookworm
+  release_info: {}
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+Module libcamera unavailble, import failed
+
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', 'network-online.target', '-.mount', 'sysinit.target']
+**After=['basic.target', 'system.slice', 'sysinit.target', 'network-online.target', 'systemd-journald.socket', '-.mount']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/paolo/printer_data/systemd/moonraker.env
+**ExecStart=/home/paolo/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=/home/paolo/moonraker
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=paolo
+
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['-.mount', 'sysinit.target', 'system.slice']
+**After=['systemd-journald.socket', 'basic.target', 'sysinit.target', 'network-online.target', 'system.slice', '-.mount']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/paolo/printer_data/systemd/klipper.env
+**ExecStart=/home/paolo/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/paolo/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=paolo
+CPU Throttled Flags: ['Under-Voltage Detected', 'Currently Throttled', 'Previously Under-Volted', 'Previously Throttled']
+Git Repo moonraker: No warnings detected
+Git Repo klipper: No warnings detected
+Git Repo fluidd-config: No warnings detected
+Klipper Version: v0.12.0-102-g9f41f53c
+2024-02-16 17:29:27,519 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.1.128
+2024-02-16 17:29:27,558 [application.py:log_request()] - 404 GET /server/database/item?namespace=webcams (192.168.1.128) [_TRUSTED_USER_] 12.76ms
+2024-02-16 17:29:27,744 [application.py:log_request()] - 101 GET /websocket?token=GYQFGUWGMO4IH4FQJNXUTZSPWXHKRNZ2 (192.168.1.128) [_TRUSTED_USER_] 3.59ms
+2024-02-16 17:29:27,745 [websockets.py:open()] - Websocket Opened: ID: 1736745776, Proxied: True, User Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36, Host Name: kp3s.local
+2024-02-16 17:29:27,756 [websockets.py:_handle_identify()] - Websocket 1736745776 Client Identified - Name: fluidd, Version: 1.27.1-2056453, Type: web
+2024-02-16 17:29:27,757 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-02-16 17:29:30,662 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-02-16 17:29:30,705 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2024-02-16 17:29:32,174 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-02-16 17:29:35,502 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-02-16 17:29:35,505 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-02-16 17:29:35,753 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-02-16 17:29:36,021 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-02-16 17:29:36,506 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor HOST', 'temperature_sensor MCU', 'heater_bed', 'extruder']
